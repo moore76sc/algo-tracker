@@ -4,8 +4,7 @@ const PromptChanger = () => {
   // needs to be done async to obtain prompt from database
   const Prompt = () => {
     return (
-      'woo'
-      
+      'Algo Prompt'
   )}; 
 
   return (
