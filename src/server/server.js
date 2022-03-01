@@ -13,11 +13,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.resolve(__dirname, '../src')));
 
 
-app.use('/api/auth', authRouter);
+app.use('/auth', authRouter);
 
-app.use('/api/algo', algoRouter);
+app.use('/algo', algoRouter);
 
-app.get('/api/', (req, res) => {
+app.get('/', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../../dist/index.html'));
 });
 
