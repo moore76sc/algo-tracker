@@ -1,7 +1,14 @@
 import React from 'react';
 
-const FormModal = () => {
+const FormModal = (props) => {
+  const { closeButton } = props;
+  return (
+    <form>
+      <div>
 
+      </div>
+    </form>
+  )
 }
 
 export default FormModal;

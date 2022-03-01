@@ -15,11 +15,12 @@ mongoose.connect(MONGO_URI, {
 const Schema = mongoose.Schema;
 
 const algoSchema = new Schema({
-  title: String,
-  prompt: String,
-  code_skeleton: String,
-  created: Date,
-  completed: Date
+  name: String,
+  category: String,
+  link: String,
+  bigO: String,
+  notes: String,
+  solution: String
 
 });
 const Algo = mongoose.model('algo', algoSchema);

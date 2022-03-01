@@ -4,7 +4,7 @@ const algoController = {};
 
 algoController.createAlgo = async (req, res, next) => {
   try {
-  //console.log(req.body)
+  console.log(req.body)
     let newAlgo = await models.Algo.create(req.body); //creates new algo with schema from the request body//////////////////////needs data sanitization!!!!!!!!!!///////////////////////////
     //console.log(newAlgo)
     return res.status(201).json({new_algo: newAlgo}); //returns the newly created object back to the front end directly
