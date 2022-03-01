@@ -23,20 +23,3 @@ CREATE TABLE public.users (
 ) WITH (
   OIDS=FALSE
 );
-
--- INSERT INTO.users VALUES (id, github_secret);
-INSERT INTO public.users VALUES (1, '');
-
--- DROP TABLE public.users;
--- CREATE TABLE public.users (
--- 	"_id" serial NOT NULL,
--- 	"username" varchar NOT NULL,
--- 	"password" varchar NOT NULL,
--- 	"session_id" varchar,
---   "cart" integer[],
--- 	CONSTRAINT "users_pk" PRIMARY KEY ("_id")
--- ) WITH (
---   OIDS=FALSE
--- );
-
--- INSERT INTO public.users VALUES (1, 'admin', 'password', 3, '{0, 9}');
