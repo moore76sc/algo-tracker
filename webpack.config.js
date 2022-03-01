@@ -32,7 +32,7 @@ const config = {
       }
     ]
   },
-   devServer: {
+  devServer: {
     host: 'localhost',
     port: 8080,
     static: {
@@ -43,7 +43,7 @@ const config = {
     historyApiFallback: true,
     headers: { 'Access-Control-Allow-Origin': '*' },
     proxy: {
-      '/algo/**': {
+      '/api/**': {
         target: 'http://localhost:3000/',
         secure: false,
       },
