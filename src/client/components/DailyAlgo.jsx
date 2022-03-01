@@ -15,7 +15,7 @@ const DailyAlgo = () => {
     <div className="outerBox">
       <h1>Algo of the Day</h1>
       <PromptChanger />
-      <button class="btn">
+      <button type="button" class="btn">
         {/* write logic for finding associated link with redux and fetching from database */}
         <link rel="stylesheet" href="" />
         link

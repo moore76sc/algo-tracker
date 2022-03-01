@@ -1,8 +1,8 @@
 import React from 'react';
 import { useTable } from 'react-table';
-import styled from 'styled-components'
+import './TrackerTable.css';
 
-const data = //insert redux state. redux does the fetch?
+
 
 
 function Table ({ data }) {
@@ -23,7 +23,7 @@ function Table ({ data }) {
             },
             {
               Header: 'LeetCode Link',
-              accessor: 'leetcode link',
+              accessor: 'link',
             },
             {
               Header: 'Solved Time Complexity',
@@ -31,7 +31,7 @@ function Table ({ data }) {
             },
             {
               Header: 'Best Possible Time Complexity', //maybe use "Best BigO" for short?
-              accessor: 'best possible time complexity',
+              accessor: 'bigO',
             },
             {
               Header: 'Notes',
@@ -39,7 +39,7 @@ function Table ({ data }) {
             },
             {
               Header: 'Video Solution',
-              accessor: 'video solution',
+              accessor: 'solution',
             },
             
           ]
@@ -48,33 +48,7 @@ function Table ({ data }) {
     []
   );//below is an example style from react table. I put it in just to show the structure if we want to move it to global styles
 
-  const Styles = styled.div`
-    padding: 1rem;
-    table {
-      border-spacing: 0;
-      border: 1px solid black;
-
-      tr {
-        :last-child {
-          td {
-            border-bottom: 0;
-          }
-        }
-      }
-
-      th,
-      td {
-        margin: 0;
-        padding: 0.5rem;
-        border-bottom: 1px solid black;
-        border-right: 1px solid black;
-
-        :last-child {
-          border-right: 0;
-        }
-      }
-    }
-  `
+  
   const {
     getTableProps,
     getTableBodyProps,
@@ -87,7 +61,8 @@ function Table ({ data }) {
     })
 
   return (
-    <table {...getTableProps()}>
+  <div className='tableContainer'>
+      <table {...getTableProps()}>
       <thead>
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
@@ -112,6 +87,7 @@ function Table ({ data }) {
         })}
       </tbody>
     </table>
+  </div>
   )
 }
 
