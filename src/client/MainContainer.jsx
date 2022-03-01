@@ -18,8 +18,12 @@ const MainContainer = () => {
 return (
   <div className="login">
     <Login/>
-    <a class="btn btn-blue" type='button' href="/auth" >
+    <a class="btn btn-blue" type='button' href="/auth/github" >
       Login with Github
+    </a>
+    <br></br>
+    <a class="btn btn-blue" type='button' href="/auth/" >
+      test cookie
     </a>
   </div>
     );
