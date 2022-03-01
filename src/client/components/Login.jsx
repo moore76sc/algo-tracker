@@ -12,9 +12,9 @@ const Login = ({isLoggedIn, handleLoginState}) => {//create two separate states 
     
     <div>
       <div className="login">
-        <h1>Login</h1>
+        {/* <h1>Login</h1> */}
         <input type="text" placeholder="Username..."
-        onChange={(event) => {//sets username in state to value at event.target.value
+        onChange={(event) => { //sets username in state to value at event.target.value
           setUsername(event.target.value)
         }}
         />
