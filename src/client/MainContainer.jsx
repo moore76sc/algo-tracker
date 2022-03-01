@@ -12,25 +12,13 @@ const mapDispatchToProps = dispatch => ({
   //create functions that will dispatch action creators
 });
 
-/* class MainContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
 
-  render() {
-    return(
-      <div className="login">
-        <Login/>
-      </div>
-    );
-    }
-} */
 const MainContainer = () => {
 
 return (
   <div className="login">
     <Login/>
-    <a class="btn btn-blue" type='button' href="/api/auth" >
+    <a class="btn btn-blue" type='button' href="/auth" >
       Login with Github
     </a>
   </div>
