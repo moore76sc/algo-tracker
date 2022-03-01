@@ -7,7 +7,7 @@ import DailyAlgo from './client/components/DailyAlgo.jsx'
 const App = () => {
   return (
     <div>
-      <MainContainer/>
+      <MainContainer />
       <DailyAlgo />
     </div>
   );

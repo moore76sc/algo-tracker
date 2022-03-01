@@ -27,6 +27,7 @@ algoController.getOneAlgo = async (req, res, next) => {
       return res.status(400).send(`Failed to retrieve algo! ${error}`);
   };
 };
+
 algoController.getAllAlgos = async (req, res, next) => {
   try {
     res.locals.allAlgos = await models.Algo.find({}).sort({_id:-1}); //retrieve all algos, sorts by most recent, and stores in locals

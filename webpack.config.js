@@ -34,10 +34,10 @@ const config = {
   },
   devServer: {
     host: 'localhost',
-    port: 8080,
+    port: 8080 ,
     static: {
       directory: path.resolve(__dirname, 'dist'),
-      publicPath: '/',
+      publicPath: '/'
     },
     hot: true,
     historyApiFallback: true,
