@@ -1,46 +1,33 @@
-import React from 'react'
-import { useState } from "react";
+import React, { useState } from "react";
 
-const Login = () => {//need to do AJAX call in handleSubmit. Also handleSignUp from redux  
-  const useInput = init => {
-    const [ value, setValue ] = useState(init);
-    const onChange = e => {
-      setValue(e.target.value);
-    };
-    return [ value, onChange ];
-  };
-  
-  const [userName, userNameOnChange] = useInput('');
-  const [password, passwordOnChange] = useInput('');//**************switch to redux************
-  
-  
+const Login = ({isLoggedIn, handleLoginState}) => {//create two separate states for the login
+    const [username, setUsername] = useState('');//******************change over to redux*********** */
+    const [password, setPassword] = useState('');//create a state for the login status
+    const [loginStatus, setLoginStatus] = useState(true);
+    const loginSubmit = () => {
+        //insert auth api call
+    }
 
-  const handleSubmit = () => {
-    //insert AJAX call for user login or handle with redux
-  }
-  const handleSignUp = () => {
-  }
-
-  return (
+    return (
+    
     <div>
-      <form onSubmit={handleSubmit}>
-        <h2>
-          Username:
-          <input className= "userNameInput" type="text" value= {userName} onChange= {userNameOnChange} />
-        </h2>
-        <h2>
-          Password:
-          <input className= "passwordInput" type="password" value= {password} onChange= {passwordOnChange} />
-        </h2>
-    </form>
-    <h2>
-    Don't have a login?
-    <button className= 'button' type='button' onClick={handleSignUp}>
-    Sign Up
-    </button>
-    </h2>
-  </div>
-  )
+      <div className="login">
+        <h1>Login</h1>
+        <input type="text" placeholder="Username..."
+        onChange={(event) => {//sets username in state to value at event.target.value
+          setUsername(event.target.value)
+        }}
+        />
+        <input type="password" placeholder="Password..."
+        onChange={(event) => {//sets password in state to value at event.target.value
+          setPassword(event.target.value)
+        }}
+        />
+        <button onClick={loginSubmit}>Login</button>
+      </div>
+      <h1>{loginStatus}</h1>
+    </div>
+    )
+}
 
-};
-export default Login;
+export default Login; 
