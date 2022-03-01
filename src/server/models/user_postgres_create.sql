@@ -18,14 +18,14 @@ SET row_security = off;
 
 CREATE TABLE public.users (
 	"_id" serial NOT NULL,
-	"github_secret" varchar NOT NULL,
+	"githubUserName" varchar NOT NULL,
 	CONSTRAINT "users_pk" PRIMARY KEY ("_id")
 ) WITH (
   OIDS=FALSE
 );
 
 -- INSERT INTO.users VALUES (id, github_secret);
-INSERT INTO public.users VALUES (1, '79d8959e07a89ddda9e98f39ed8d2f3df3669e67');
+INSERT INTO public.users VALUES (1, '');
 
 -- DROP TABLE public.users;
 -- CREATE TABLE public.users (
