@@ -29,8 +29,11 @@ const MainContainer = () => {
 
 return (
   <div className="login">
-        <Login/>
-      </div>
+    <Login/>
+    <a class="btn btn-blue" type='button' href="/api/auth" >
+      Login with Github
+    </a>
+  </div>
     );
 }
 
