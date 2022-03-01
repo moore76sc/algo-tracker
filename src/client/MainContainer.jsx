@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  //create functions sthat will dispatch action creators
+  //create functions that will dispatch action creators
 });
 
 class MainContainer extends Component {
@@ -18,10 +18,10 @@ class MainContainer extends Component {
 
   render() {
     return(
-      <div className="app">
-        
+      <div className="login">
+        <Login/>
       </div>
-    )
+    );
     }
 }
 

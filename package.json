@@ -12,7 +12,7 @@
     "build-prod": "webpack --mode production",
     "start": "webpack serve --hot --mode development",
     "startServer": " nodemon ./src/server/server.js",
-    "dev": "concurrently \"nodemon server/server.js\" \"webpack serve --mode development\""
+    "dev": "concurrently \"nodemon ./src/server/server.js\" \"webpack serve --hot --mode development\""
   },
   "dependencies": {
     "@octokit/request": "^5.6.3",
@@ -20,6 +20,7 @@
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/typography": "^0.5.2",
     "axios": "^0.26.0",
+    "cjs": "^0.0.11",
     "concurrently": "^7.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
@@ -33,6 +34,7 @@
     "react-hot-loader": "^4.13.0",
     "react-redux": "^7.2.6",
     "redux": "^4.1.2",
+    "redux-devtools-extension": "^2.13.9",
     "tailwindcss": "^3.0.23"
   },
   "devDependencies": {
@@ -43,8 +45,6 @@
     "autoprefixer": "^10.4.2",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.6.0",
-    "eslint": "^8.9.0",
-    "eslint-plugin-react": "^7.29.1",
     "postcss-loader": "^6.2.1",
     "style-loader": "^3.3.1",
     "webpack": "^5.69.1",
