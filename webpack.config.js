@@ -32,10 +32,31 @@ const config = {
       }
     ]
   },
-  devServer: {
-    'static': {
-      directory: './dist'
-    }
+   devServer: {
+    host: 'localhost',
+    port: 8080,
+    static: {
+      directory: path.resolve(__dirname, 'dist'),
+      publicPath: '/',
+    },
+    hot: true,
+    historyApiFallback: true,
+    headers: { 'Access-Control-Allow-Origin': '*' },
+    proxy: {
+      '/algo/**': {
+        target: 'http://localhost:3000/',
+        secure: false,
+      },
+      '/assets/**': {
+        target: 'http://localhost:3000/',
+        secure: false,
+      },
+    },
+  },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
   }
 };
 
