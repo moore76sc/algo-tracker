@@ -1,23 +1,15 @@
 
-import React from "react";
+import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
-// eslint-disable-next-line no-undef
+import MainContainer from './client/MainContainer.jsx';
 
 
-class App extends React.Component {
-  render() {
-    const { name } = this.props;
-    return (
-      <>
-        <h1 className="text-4xl text-white bg-black">
-          Hello {name}
-        </h1>
-        <a class="btn btn-blue" type='button' href="/api/auth" >
-          Login with Github
-        </a>
-      </>
-    );
-  }
+const App = () => {
+  return (
+    <div>
+      <MainContainer/>
+    </div>
+  );
 }
 
 export default hot(App);
