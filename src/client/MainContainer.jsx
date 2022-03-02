@@ -7,7 +7,7 @@ import Table from './components/TrackerTable.jsx';
 
 
 const mapStateToProps = state => ({
-  //insert state here
+  algoList: state.
 });
 
 const mapDispatchToProps = dispatch => ({
