@@ -6,6 +6,7 @@ const initialState = {
 
 const trackerTableReducer = (state = initialState, action) => {
   let algoList;
+  console.log('table reducer fire')
 
   switch (action.type) {
     case types.GET_ALL_ALGOS:

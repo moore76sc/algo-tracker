@@ -1,18 +1,19 @@
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-unused-expressions */
 import React, { useState, useEffect } from 'react';
+import { StyledEngineProvider } from '@mui/material/styles';
 import { connect } from 'react-redux';
-import {
-  Link, BrowserRouter, Routes, Route,
-} from 'react-router-dom';
 import * as actions from './actions/actions.js';
 import DailyAlgo from './components/DailyAlgo.jsx';
 import LoginHeader from './components/LoginHeader.jsx';
 import LoginModal from './components/LoginModal.jsx';
-import Table from './components/TrackerTable.jsx';
+import NewTable from './components/table.jsx';
+
 
 const axios = require('axios');
 
@@ -31,7 +32,7 @@ const MainContainer = props => {
 
   useEffect(() => {
     props.retrieveAllAlgos();
-  }, [props]);
+  }, []);
 
   useEffect(() => {
     if (ranOnce) return;
@@ -54,24 +55,12 @@ const MainContainer = props => {
 
   return (
     <div className="mainContainer">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<DailyAlgo />}>
-            <Route path="/user" element={<Table data={props.algoList} />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <LoginModal loginClass={loginClass} handleClick={handleClick} />
+      <LoginHeader userName={userName} />
+      <DailyAlgo />
+      <NewTable data={props.algoList} />
     </div>
   );
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
-
-
-
-    //   <div className="mainContainer">
-    //     <LoginModal loginClass={loginClass} handleClick={handleClick} />
-    //     <LoginHeader userName={userName} />
-
-    //     {/* <DailyAlgo /> */}
-    //     <Table data={props.algoList} />

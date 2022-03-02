@@ -3,6 +3,7 @@ import React from 'react';
 import { useTable } from 'react-table';
 import './TrackerTable.css';
 
+
 function Table({ data }) {
   const columns = React.useMemo(
     () => [

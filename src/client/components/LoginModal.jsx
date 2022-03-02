@@ -1,20 +1,22 @@
-import React from "react";
-import Button from "@mui/material/Button";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import "./LoginModal.css";
-import GithubLogo from "../imgs/githubLogoLarge.svg";
+/* eslint-disable react/prop-types */
+/* eslint-disable no-restricted-globals */
+import React from 'react';
+import Button from '@mui/material/Button';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import './LoginModal.css';
+import GithubLogo from '../imgs/githubLogoLarge.svg';
 
 const theme = createTheme({
   palette: {
     neutral: {
-      main: "#64748B",
-      contrastText: "#fff",
+      main: '#64748B',
+      contrastText: '#fff',
     },
   },
 });
 
 function handleGithub() {
-  location.href = "http://localhost:8080/auth/github";
+  location.href = 'http://localhost:8080/auth/github';
 }
 
 function LoginModal({ loginClass, handleClick }) {
@@ -34,8 +36,8 @@ function LoginModal({ loginClass, handleClick }) {
           </Button>
         </ThemeProvider>
         <button className="hideButton" type="button" onClick={handleClick}>
-          {" "}
-          Hide{" "}
+          {' '}
+          Hide{' '}
         </button>
       </div>
     </div>
