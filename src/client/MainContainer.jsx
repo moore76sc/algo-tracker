@@ -4,6 +4,7 @@ import * as actions from './actions/actions.js';
 import DailyAlgo from './components/DailyAlgo.jsx'
 import LoginHeader from './components/LoginHeader.jsx';
 import LoginModal from './components/LoginModal.jsx';
+import FormModal from './components/FormModal.jsx';
 import Table from './components/TrackerTable.jsx';
 const axios = require('axios');
 
@@ -18,6 +19,7 @@ const mapDispatchToProps = dispatch => ({
 const MainContainer = (props) => {
   const [loginClass, setLoginClass] = useState('loginModalHidden');
   const [userName, setUserName] = useState(null);
+  const [userId, setUserId] = useState(null);
   const [userAvatar, setUserAvatar] = useState(null);
 
   useEffect(() => {
@@ -26,13 +28,14 @@ const MainContainer = (props) => {
 
   useEffect(() => {
     const foo = async () => {
-      const res = await ( await axios.get(`/auth/verify`));
+      const res = await axios.get(`/auth/verify`);
       // if the verify fails, show modal else setUsername
       if (res.data === null) {
         setLoginClass('loginModal');
       } else {
         // console.log("data", res.data.userData);
         setUserName(res.data.userData.name);
+        setUserId(res.data.userData.id);
         setUserAvatar(res.data.userData.avatar_url);
       }
     }
@@ -47,6 +50,7 @@ const MainContainer = (props) => {
       <LoginHeader userName={userName} userAvatar={userAvatar}/>
       <DailyAlgo />
       <Table data={props.algoList} />
+      <FormModal userId={userId} algo={props.algoList[0]}/>
     </div>
   );
 }

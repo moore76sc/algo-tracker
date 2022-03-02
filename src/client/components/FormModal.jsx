@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+const axios = require('axios');
 
 const FormModal = (props) => {
   // const { closeButton } = props;
+  const [completed, setCompleted] = useState('yes');
+  const [timeComp, setTimeComp] = useState('constant: O(1)');
+  const [difficulty, setDifficulty] = useState('easy');
+  const [repeat, setRepeat] = useState('yes');
+  const [notes, setNotes] = useState('');
 
   /**
    * 'completed' var DROPDOWN
@@ -16,14 +22,29 @@ const FormModal = (props) => {
    * 'date' var
    */
 
+  const handleSubmit = () => {
+    // needs to get the algo of the day Id or name
+    const body = {
+      userId: props.userId,
+      algoName: props.algo.name,
+      completed: completed,
+      timeComp: timeComp,
+      difficulty: difficulty,
+      repeat: repeat,
+    }
+    console.log(body);
+
+    axios.post(`/auth/addAlgoData`, {body});
+  }
+
   return (
-    <form className="form">
+    <form className="form" action="/auth/getUserData" method="post" >
       {/* mx: left/right margins; mb: bottom margin */}
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <label className="label">completed</label>
           <div className="relative">
-            <select className="select" id="completed">
+            <select className="select" id="completed" onChange={(e) => { setCompleted(e.target.value) }}>
               <option>yes</option>
               <option>in progress</option>
             </select>
@@ -32,7 +53,7 @@ const FormModal = (props) => {
           <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
             <label className="label">time complexity</label>
             <div className="relative">
-              <select className="select" id="timeComplexity">
+              <select className="select" id="timeComplexity" onChange={(e) => { setCompleted(e.target.value) }}>
                 <option>constant: O(1)</option>
                 <option>linear: O(n)</option>
                 <option>quadratic: O(n<sup>2</sup>)</option>
@@ -45,7 +66,7 @@ const FormModal = (props) => {
           <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
             <label className="label">difficulty</label>
             <div className="relative">
-              <select className="select" id="difficulty">
+              <select className="select" id="difficulty" onChange={(e) => { setCompleted(e.target.value) }}>
                 <option>easy</option>
                 <option>somewhat easy</option>
                 <option>somewhat difficult</option>
@@ -63,7 +84,7 @@ const FormModal = (props) => {
             would you like this to repeat again?
           </label>
           <div className="relative">
-              <select className="select" id="repeat">
+              <select className="select" id="repeat" onChange={(e) => { setCompleted(e.target.value) }}>
                 <option>yes</option>
                 <option>no</option>
               </select>
@@ -83,7 +104,8 @@ const FormModal = (props) => {
       <div class="md:flex md:items-center">
         <div class="md:w-1/3"></div>
         <div class="md:w-2/3">
-          <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+          <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button"
+            onClick={ handleSubmit}>
             submit
           </button>
         </div>
