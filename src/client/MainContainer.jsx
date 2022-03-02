@@ -18,6 +18,8 @@ const mapDispatchToProps = dispatch => ({
 
 const MainContainer = (props) => {
   const [loginClass, setLoginClass] = useState('loginModalHidden');
+  const [formClass, setFormClass] = useState('formModal');
+
   const [userName, setUserName] = useState(null);
   const [userId, setUserId] = useState(null);
   const [userAvatar, setUserAvatar] = useState(null);
@@ -42,15 +44,17 @@ const MainContainer = (props) => {
     foo().catch(console.error);
   }, []);
 
-  function handleClick() { (loginClass === 'loginModal') ? setLoginClass('loginModalHidden') : setLoginClass('loginModal'); }
+  function hideLogin() { (loginClass === 'loginModal') ? setLoginClass('loginModalHidden') : setLoginClass('loginModal'); }
+
+  function hideForm() { (formClass === 'formModal') ? setFormClass('formModalHidden') : setFormClass('formModal'); }
 
   return (
     <div className="mainContainer">
-      <LoginModal loginClass={loginClass} handleClick={handleClick}/>
+      <LoginModal loginClass={loginClass} handleHide={hideLogin}/>
+      <FormModal formClass={formClass} handleHide={hideForm} userId={userId} algo={props.algoList[0]}/>
       <LoginHeader userName={userName} userAvatar={userAvatar}/>
       <DailyAlgo />
       <Table data={props.algoList} />
-      <FormModal userId={userId} algo={props.algoList[0]}/>
     </div>
   );
 }

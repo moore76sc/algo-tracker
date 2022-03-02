@@ -1,0 +1,49 @@
+.formModal{
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  position: absolute;
+  z-index: 7;
+  background:rgba(214, 126, 126, 0.1);
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  backdrop-filter: blur(3px);
+}
+
+.formModalHidden{
+  display: none;
+  position: absolute;
+}
+
+/* .innerModal{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background:rgb(240, 235, 235);
+  margin-top: 8%;
+  width: 220px;
+  height: 230px;
+  z-index: 19;
+  box-shadow: 0 0 10px rgba(112, 112, 112, 0.3);
+} */
+
+/* .loginGithubButton{
+  display: block;
+  position: relative;
+  z-index: 20;
+} */
+.hideButton{
+  display: block;
+  position: relative;
+  z-index: 20;
+  margin-top: 8px;
+}
+/*
+.svg{
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 21;
+} */

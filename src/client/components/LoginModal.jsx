@@ -15,7 +15,7 @@ const theme = createTheme({
 
 function handleGithub() { location.href='http://localhost:8080/auth/github' }
 
-function LoginModal({ loginClass, handleClick }) {
+function LoginModal({ loginClass, handleHide }) {
   return (
     <div className={loginClass}>
 
@@ -24,7 +24,7 @@ function LoginModal({ loginClass, handleClick }) {
         <ThemeProvider theme={theme}>
           <Button className="loginGithubButton" color="neutral" variant="contained" type="button" onClick={handleGithub}>Login with Github</Button>
         </ThemeProvider>
-        <button className="hideButton" type="button" onClick={handleClick}> Hide </button>
+        <button className="hideButton" type="button" onClick={handleHide}> Hide </button>
       </div>
 
     </div>
