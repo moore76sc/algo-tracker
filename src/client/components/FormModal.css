@@ -4,7 +4,7 @@
   /* align-items: center; */
   position: absolute;
   z-index: 7;
-  background:rgba(214, 126, 126, 0.1);
+  background: rgba(240, 233, 233, 0.1);
   height: 100%;
   width: 100%;
   background-size: cover;
@@ -22,8 +22,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  background:rgb(183, 219, 252);
-  /* background-color: aqua; */
+  background:rgb(201, 222, 240);
   margin-top: 9%;
   width: auto;
   height: 525px;
@@ -32,22 +31,22 @@
 }
 .form{
   padding: 10px;
+  text-align: center;
+  margin-top: 10px;
 }
 
-/* .loginGithubButton{
-  display: block;
-  position: relative;
-  z-index: 20;
-} */
+.submit{
+  margin-top: 15px;
+}
+
+.label{
+  margin-bottom: 2px !important;
+  margin-top: 9px !important;
+}
+
 .hideButton{
   display: block;
   position: relative;
   z-index: 20;
   margin-top: 8px;
 }
-/*
-.svg{
-  margin-bottom: 30px;
-  position: relative;
-  z-index: 21;
-} */

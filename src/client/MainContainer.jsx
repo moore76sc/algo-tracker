@@ -1,11 +1,3 @@
-/* eslint-disable import/no-named-as-default-member */
-/* eslint-disable react/jsx-no-bind */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-console */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-unused-expressions */
 import React, { useState, useEffect } from 'react';
 import { StyledEngineProvider } from '@mui/material/styles';
 import { connect } from 'react-redux';
@@ -13,6 +5,7 @@ import * as actions from './actions/actions.js';
 import DailyAlgo from './components/DailyAlgo.jsx';
 import LoginHeader from './components/LoginHeader.jsx';
 import LoginModal from './components/LoginModal.jsx';
+import FormModal from './components/FormModal.jsx';
 import NewTable from './components/table.jsx';
 
 
@@ -28,7 +21,7 @@ const mapDispatchToProps = dispatch => ({
 
 const MainContainer = props => {
   const [loginClass, setLoginClass] = useState('loginModalHidden');
-  const [formClass, setFormClass] = useState('formModal');
+  const [formClass, setFormClass] = useState('formModalHidden');
 
   const [userName, setUserName] = useState(null);
   const [userId, setUserId] = useState(null);
@@ -54,16 +47,16 @@ const MainContainer = props => {
     foo().catch(console.error);
   }, []);
 
-  function hideLogin() { (loginClass === 'loginModal') ? setLoginClass('loginModalHidden') : setLoginClass('loginModal'); }
+  function toggleLogin() { (loginClass === 'loginModal') ? setLoginClass('loginModalHidden') : setLoginClass('loginModal'); }
 
-  function hideForm() { (formClass === 'formModal') ? setFormClass('formModalHidden') : setFormClass('formModal'); }
+  function toggleForm() { (formClass === 'formModal') ? setFormClass('formModalHidden') : setFormClass('formModal'); }
 
   return (
     <div className="mainContainer">
-      <LoginModal loginClass={loginClass} handleHide={hideLogin}/>
-      <FormModal formClass={formClass} handleHide={hideForm} userId={userId} algo={props.algoList[0]}/>
+      <LoginModal loginClass={loginClass} handleHide={toggleLogin}/>
+      <FormModal formClass={formClass} handleHide={toggleForm} userId={userId} algo={props.algoList[0]}/>
       <LoginHeader userName={userName} userAvatar={userAvatar}/>
-      <DailyAlgo />
+      <DailyAlgo toggleForm={toggleForm}/>
       <NewTable data={props.algoList} />
     </div>
   );

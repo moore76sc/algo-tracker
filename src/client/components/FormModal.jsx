@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
 import './FormModal.css';
+import Button from '@mui/material/Button';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 const axios = require('axios');
+
+const theme = createTheme({
+  palette: {
+    neutral: {
+      main: '#64748B',
+      contrastText: '#fff',
+    },
+  },
+});
 
 const FormModal = ({ formClass, handleHide }) => {
   const [completed, setCompleted] = useState('yes');
@@ -20,11 +31,9 @@ const FormModal = ({ formClass, handleHide }) => {
       difficulty: difficulty,
       repeat: repeat,
     }
-    console.log(body);
     axios.post(`/auth/addAlgoData`, {body});
   }
 
-  console.log(formClass);
   return (
     <div className={formClass}>
       <div className="innerFormModal">
@@ -95,10 +104,11 @@ const FormModal = ({ formClass, handleHide }) => {
           <div className="md:flex md:items-center">
             <div className="md:w-1/3"></div>
             <div className="md:w-2/3">
-              <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button"
-                onClick={ handleSubmit}>
-                submit
-              </button>
+              <ThemeProvider className="submit" theme={theme}>
+                <Button variant="contained" type="button" color="neutral" onClick={handleSubmit}>
+                  submit
+                </Button>
+              </ThemeProvider>
             </div>
           </div>
         </form>
