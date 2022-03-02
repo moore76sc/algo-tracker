@@ -1,52 +1,64 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as actions from './actions/actions.js';
-import DailyAlgo from './components/DailyAlgo.jsx'
+import DailyAlgo from './components/DailyAlgo.jsx';
 import LoginHeader from './components/LoginHeader.jsx';
 import LoginModal from './components/LoginModal.jsx';
-import Table from './components/TrackerTable.jsx';
+import NewTable from './components/table.jsx';
+
 const axios = require('axios');
 
 const mapStateToProps = state => ({
-  algoList: state.algos.algoList
+  algoList: state.algos.algoList,
 });
 
 const mapDispatchToProps = dispatch => ({
-  retrieveAllAlgos: () => actions.retrieveAllAlgosActionCreator(dispatch)
+  retrieveAllAlgos: () => actions.retrieveAllAlgosActionCreator(dispatch),
 });
 
-const MainContainer = (props) => {
+const MainContainer = props => {
   const [loginClass, setLoginClass] = useState('loginModalHidden');
   const [userName, setUserName] = useState(null);
-  const [ranOnce, setRanOnce] = useState(null);
+  const [userId, setUserId] = useState(null);
+  const [userAvatar, setUserAvatar] = useState(null);
 
   useEffect(() => {
-    props.retrieveAllAlgos()
-  }, [])
+    props.retrieveAllAlgos();
+  }, []);
 
   useEffect(() => {
-    if (ranOnce) return;
     const foo = async () => {
-      const res = await axios.get(`/auth/verify`);
+      const res = await axios.get('/auth/verify');
       // if the verify fails, show modal else setUsername
-      res.data === null ? setLoginClass('loginModal') : setUserName(res.data.name);
+      if (res.data === null) {
+        setLoginClass('loginModal');
+      } else {
+        // console.log("data", res.data.userData);
+        setUserName(res.data.userData.name);
+        setUserId(res.data.userData.id);
+        setUserAvatar(res.data.userData.avatar_url);
+      }
     }
     foo().catch(console.error);
-    setRanOnce(true);
-  });
+  }, []);
 
-  function handleClick() { (loginClass === 'loginModal') ? setLoginClass('loginModalHidden') : setLoginClass('loginModal'); }
+  function handleClick() {
+    loginClass === 'loginModal'
+      ? setLoginClass('loginModalHidden')
+      : setLoginClass('loginModal');
+  }
 
   return (
-    <div className="mainContainer">
-      <LoginModal loginClass={loginClass} handleClick={handleClick}/>
-      <LoginHeader userName={userName}/>
-      <DailyAlgo />
-      <Table data={props.algoList} />
-  
+    <div>
+      <LoginHeader userName={userName} userAvatar={userAvatar} />
+      <div className="mainContainer">
+        <LoginModal loginClass={loginClass} handleClick={handleClick} />
+        <DailyAlgo data={props.algoList} />
+        <NewTable data={props.algoList} />
+        {/* <FormModal userId={userId} algo={props.algoList[0]} /> */}
+      </div>
     </div>
   );
-}
-
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);

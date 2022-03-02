@@ -24,4 +24,23 @@
 -- 	CONSTRAINT "users_pk" PRIMARY KEY ("_id")
 -- );
 
+DELETE FROM algos;
+DROP TABLE algos;
+
+CREATE TABLE algos (
+	name varchar NOT NULL,
+  userId serial,
+	completed varchar,
+	repeat varchar,
+	timeComp varchar,
+	PRIMARY KEY (name)
+);
+
+-- algoName: "Contains Duplicate"
+-- completed: "yes"
+-- difficulty: "easy"
+-- repeat: "yes"
+-- timeComp: "constant: O(1)"
+-- userId: 6564875
+
 -- INSERT INTO users (_id, github_username, name, access_token) VALUES (1, 'username', 'foo bar', 'foo');

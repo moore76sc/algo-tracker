@@ -1,10 +1,21 @@
-.login{
+.login {
   display: flex;
   justify-content: flex-end;
 }
 
-
-.helloMsg{
+.helloMsg {
   text-align: right;
   margin-right: 10px;
+}
+
+.loginSuccess{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.loginSuccess:hover{
+  box-shadow: 0 0 10px rgba(112, 112, 112, 0.3);
 }

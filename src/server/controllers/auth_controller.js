@@ -18,6 +18,17 @@ authController.getAllUsers = async (req, res, next) => {
   }
 };
 
+authController.getAllAlgos = async (req, res, next) => {
+  try {
+    const queryString = `SELECT * FROM algos;`;
+    const { rows } = await db.query(queryString);
+    res.locals.algos = rows;
+    return next();
+  } catch (error) {
+    return res.status(400).send(`Failed to retrieve algos! ${error}`);
+  }
+};
+
 authController.cb = async ({ query: { code } }, res, next) => {
   try {
     const opts = { headers: { accept: 'application/json' } };
@@ -74,19 +85,50 @@ authController.addCookie = async (req, res, next) => {
 authController.verify = async (req, res, next) => {
   try {
     if (req.cookies.JWT_token) {
-      const payload = await JWT.verify(req.cookies.JWT_token, process.env.jwt_secret);
-      if (!payload.aud) return next();
+      let payload;
+      try {
+        payload = await JWT.verify(req.cookies.JWT_token, process.env.jwt_secret);
+      } catch (err) {
+        return next();
+      }
+      if (!payload) return next();
       const octokit = new Octokit({ auth: payload.aud });
       const result = await octokit.request('GET /user');
-      res.locals.name = result.data.name;
+      res.locals.userData = result.data;
     }
     return next();
   } catch (error) {
+    console.log(error);
     if (error?.response?.data?.message === 'Bad credentials') {
       return next();
     }
     return res.status(400).send(`error in authController.verify! ${error}`);
   }
+};
+
+authController.addAlgoData = async (req, res, next) => {
+  try {
+    const { body } = req.body;
+    const query = `INSERT INTO algos (name, userid, completed, repeat, timeComp) VALUES ('${body.algoName}', ${body.userId}, '${body.completed}', '${body.repeat}', '${body.timeComp}');`;
+    await db.query(query);
+    return next();
+  } catch (error) {
+    return res.status(400).send(`error in authController.addAlgoData! ${error}`);
+  };
+};
+
+authController.getUserAlgos = async (req, res, next) => {
+  try {
+    const { id } = req.query;
+    console.log(' ', id);
+    const query = `SELECT * FROM algos WHERE userid = ${id};`;
+    const { rows } = await db.query(query);
+    res.locals.algos = rows;
+    return next();
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send(`error in authController.getUserAlgos! ${error}`);
+  };
 };
 
 
