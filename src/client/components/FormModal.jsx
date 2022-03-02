@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './LoginModal.css';
+import './FormModal.css';
 const axios = require('axios');
 
 const FormModal = ({ formClass, handleHide }) => {
