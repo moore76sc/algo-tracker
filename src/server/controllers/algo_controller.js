@@ -4,7 +4,7 @@ const algoController = {};
 
 algoController.createAlgo = async (req, res, next) => {
   try {
-  //console.log(req.body)
+  console.log(req.body)
     let newAlgo = await models.Algo.create(req.body); //creates new algo with schema from the request body//////////////////////needs data sanitization!!!!!!!!!!///////////////////////////
     //console.log(newAlgo)
     return res.status(201).json({new_algo: newAlgo}); //returns the newly created object back to the front end directly
@@ -27,6 +27,7 @@ algoController.getOneAlgo = async (req, res, next) => {
       return res.status(400).send(`Failed to retrieve algo! ${error}`);
   };
 };
+
 algoController.getAllAlgos = async (req, res, next) => {
   try {
     res.locals.allAlgos = await models.Algo.find({}).sort({_id:-1}); //retrieve all algos, sorts by most recent, and stores in locals
