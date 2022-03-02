@@ -32,8 +32,12 @@ const MainContainer = () => {
       <a class="btn btn-blue" type='button' href="/auth" >
         Login with Github
       </a>
+      <a class="btn btn-blue" type='button' href="/auth/" >
+      test cookie
+    </a>
       <DailyAlgo />
       <Table data={data}/>
+
     </div>
   );
 }
