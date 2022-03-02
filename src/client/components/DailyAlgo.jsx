@@ -4,13 +4,13 @@ import PromptChanger from './PromptChanger.jsx';
 import FormModal from './FormModal.jsx';
 
 /**
- * 
+ *
  * prompt changes daily based on random fetch request from database
- * 
+ *
  */
 
 const DailyAlgo = () => {
-  
+
   return (
     <div className="outerBox">
       <h1>Algo of the Day</h1>

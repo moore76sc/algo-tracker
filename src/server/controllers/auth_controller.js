@@ -74,16 +74,17 @@ authController.addCookie = async (req, res, next) => {
 authController.verify = async (req, res, next) => {
   try {
     if (req.cookies.JWT_token) {
-      JWT.verify(req.cookies.JWT_token, process.env.jwt_secret, async (err, payload) => {
-        if (err) return next(err);
-        const octokit = new Octokit({ auth: payload.aud });
-        const result = await octokit.request('GET /user');
-        res.locals.verifyed = true;
-        console.log('Howdy', result.data.name);
-      });
+      const payload = await JWT.verify(req.cookies.JWT_token, process.env.jwt_secret);
+      if (!payload.aud) return next();
+      const octokit = new Octokit({ auth: payload.aud });
+      const result = await octokit.request('GET /user');
+      res.locals.name = result.data.name;
     }
     return next();
   } catch (error) {
+    if (error?.response?.data?.message === 'Bad credentials') {
+      return next();
+    }
     return res.status(400).send(`error in authController.verify! ${error}`);
   }
 };

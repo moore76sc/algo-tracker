@@ -3,6 +3,7 @@ const path = require('path');
 
 const config = {
   entry: [
+    'babel-polyfill',
     'react-hot-loader/patch',
     './src/index.js'
   ],
@@ -29,12 +30,16 @@ const config = {
           },
           'postcss-loader'
         ]
+      },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
       }
     ]
   },
   devServer: {
     host: 'localhost',
-    port: 8080 ,
+    port: 8080,
     static: {
       directory: path.resolve(__dirname, 'dist'),
       publicPath: '/'
