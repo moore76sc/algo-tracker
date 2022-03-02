@@ -41,10 +41,9 @@ const MainContainer = (props) => {
     <div className="mainContainer">
       <LoginModal loginClass={loginClass} handleClick={handleClick}/>
       <LoginHeader userName={userName}/>
-
       <DailyAlgo />
       <Table data={props.algoList} />
-
+  
     </div>
   );
 }
