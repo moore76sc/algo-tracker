@@ -20,15 +20,17 @@ app.use('/auth', authRouter);
 
 app.use('/algo', algoRouter);
 
-app.get('/', authController.verify, (req, res) => {
-  if (res.locals.verifyed) {
-    res.status(200).sendFile(path.join(__dirname, '../../dist/index.html'));
-  } else {
-    console.log('hey stranger, youre not authorized: please sign up on github');
-    res.redirect(
-      `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}`,
-    );
-  }
+// authController.verify
+app.get('/', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, '../../dist/index.html'));
+  // if (res.locals.name) {
+  //   res.status(200).sendFile(path.join(__dirname, '../../dist/index.html'));
+  // } else {
+  //   console.log('hey stranger, youre not authorized: please sign up on github');
+  //   res.redirect(
+  //     `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}`,
+  //   );
+  // }
 });
 
 app.use((req, res) => {

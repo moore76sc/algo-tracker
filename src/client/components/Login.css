@@ -1,0 +1,10 @@
+.login{
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.helloMsg{
+  text-align: right;
+  margin-right: 10px;
+}

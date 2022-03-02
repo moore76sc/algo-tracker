@@ -18,4 +18,4 @@ const signAccessToken = (userId) => {
 };
 
 
-module.exports = { signAccessToken };
+module.exports = signAccessToken;

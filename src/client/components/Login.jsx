@@ -1,33 +1,39 @@
 import React, { useState } from "react";
+import Button from '@mui/material/Button';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import GithubLogo from '../imgs/githubLogoSmall.svg'
+import './Login.css';
 
-const Login = ({isLoggedIn, handleLoginState}) => {//create two separate states for the login
-    const [username, setUsername] = useState('');//******************change over to redux*********** */
-    const [password, setPassword] = useState('');//create a state for the login status
-    const [loginStatus, setLoginStatus] = useState(true);
-    const loginSubmit = () => {
-        //insert auth api call
-    }
+const theme = createTheme({
+  palette: {
+    neutral: {
+      main: '#64748B',
+      contrastText: '#fff',
+    },
+  },
+});
 
-    return (
-    
-    <div>
-      <div className="login">
-        {/* <h1>Login</h1> */}
-        <input type="text" placeholder="Username..."
-        onChange={(event) => { //sets username in state to value at event.target.value
-          setUsername(event.target.value)
-        }}
-        />
-        <input type="password" placeholder="Password..."
-        onChange={(event) => {//sets password in state to value at event.target.value
-          setPassword(event.target.value)
-        }}
-        />
-        <button onClick={loginSubmit}>Login</button>
-      </div>
-      <h1>{loginStatus}</h1>
+
+const Login = ({isLoggedIn, handleLoginState, userName}) => {//create two separate states for the login
+  // const [username, setUsername] = useState('');//******************change over to redux*********** */
+  // const [password, setPassword] = useState('');//create a state for the login status
+  // const [loginStatus, setLoginStatus] = useState(true);
+  // const loginSubmit = () => {
+  //     //insert auth api call
+  // }
+
+  function handleGithub() {  location.href='http://localhost:8080/auth/github' }
+
+  return (
+    <div className="login">
+      {userName ?
+        <h1 className="helloMsg"> {`Hello ${userName.split(' ')[0]}`} </h1>
+        : <ThemeProvider theme={theme}>
+          <Button className="helloMsg" startIcon={<GithubLogo/>} color="neutral" variant="contained" type="button" onClick={handleGithub}>Login</Button>
+          </ThemeProvider>
+      }
     </div>
-    )
+  )
 }
 
-export default Login; 
+export default Login;

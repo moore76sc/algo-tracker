@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as actions from './actions/actions.js';
 import DailyAlgo from './components/DailyAlgo.jsx'
 import Login from './components/Login.jsx';
+import LoginModal from './components/LoginModal.jsx';
 import Table from './components/TrackerTable.jsx';
-
+const axios = require('axios');
 
 const mapStateToProps = state => ({
-  algoList: state.
+  // algoList: state.
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -23,20 +24,34 @@ const data = [{
    solution: 'https://www.youtube.com/watch?v=1pkOgXD63yU'
  }]
 
+const MainContainer = (props) => {
+  const [loginClass, setLoginClass] = useState('loginModalHidden');
+  const [userName, setUserName] = useState(null);
+  const [ranOnce, setRanOnce] = useState(null);
 
+  useEffect(() => {
+    if (ranOnce) return;
+    const foo = async () => {
+      const res = await axios.get(`/auth/verify`);
+      if (res.data === null) {
+        setLoginClass('loginModal'); // if the verify fails, show modal
+      } else {
+        setUserName(res.data.name);
+      }
+    }
+    foo().catch(console.error);
+    setRanOnce(true);
+  });
 
-const MainContainer = () => {
+  function handleClick() { (loginClass === 'loginModal') ? setLoginClass('loginModalHidden') : setLoginClass('loginModal'); }
+
   return (
-    <div className="login">
-      <Login/>
-      <a class="btn btn-blue" type='button' href="/auth" >
-        Login with Github
-      </a>
-      <a class="btn btn-blue" type='button' href="/auth/" >
-      test cookie
-    </a>
+    <div className="mainContainer">
+      <LoginModal loginClass={loginClass} handleClick={handleClick}/>
+      <Login userName={userName}/>
+
       <DailyAlgo />
-      <Table data={data}/>
+      <Table data={data} />
 
     </div>
   );

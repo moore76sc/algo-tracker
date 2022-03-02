@@ -13,15 +13,15 @@
 -- SET row_security = off;
 
 
-DELETE FROM users;
-DROP TABLE users;
+-- DELETE FROM users;
+-- DROP TABLE users;
 
-CREATE TABLE users (
-	"_id" serial NOT NULL,
-	"github_username" varchar,
-	"name" varchar,
-	"access_token" varchar,
-	CONSTRAINT "users_pk" PRIMARY KEY ("_id")
-);
+-- CREATE TABLE users (
+-- 	"_id" serial NOT NULL,
+-- 	"github_username" varchar,
+-- 	"name" varchar,
+-- 	"access_token" varchar,
+-- 	CONSTRAINT "users_pk" PRIMARY KEY ("_id")
+-- );
 
-INSERT INTO users (_id, github_username, name, access_token) VALUES (1, 'username', 'foo bar', 'foo');
+-- INSERT INTO users (_id, github_username, name, access_token) VALUES (1, 'username', 'foo bar', 'foo');

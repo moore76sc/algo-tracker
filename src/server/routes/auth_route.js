@@ -7,6 +7,15 @@ router.get('/', (req, res) => {
   return res.status(201);
 });
 
+router.get('/verify', authController.verify, (req, res) => {
+  if (res.locals.name) {
+    console.log(res.locals.name);
+    res.status(200).json({ name: res.locals.name });
+  } else {
+    res.status(200).json(null);
+  }
+});
+
 router.get('/github', (req, res) => {
   res.redirect(
     `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}`,
