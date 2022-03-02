@@ -4,6 +4,7 @@ import * as actions from './actions/actions.js';
 import DailyAlgo from './components/DailyAlgo.jsx';
 import LoginHeader from './components/LoginHeader.jsx';
 import LoginModal from './components/LoginModal.jsx';
+import FormModal from './components/FormModal.jsx';
 import NewTable from './components/table.jsx';
 
 const axios = require('axios');
@@ -18,6 +19,8 @@ const mapDispatchToProps = dispatch => ({
 
 const MainContainer = props => {
   const [loginClass, setLoginClass] = useState('loginModalHidden');
+  const [formClass, setFormClass] = useState('formModalHidden');
+
   const [userName, setUserName] = useState(null);
   const [userId, setUserId] = useState(null);
   const [userAvatar, setUserAvatar] = useState(null);
@@ -42,20 +45,18 @@ const MainContainer = props => {
     foo().catch(console.error);
   }, []);
 
-  function handleClick() {
-    loginClass === 'loginModal'
-      ? setLoginClass('loginModalHidden')
-      : setLoginClass('loginModal');
-  }
+  function toggleLogin() { (loginClass === 'loginModal') ? setLoginClass('loginModalHidden') : setLoginClass('loginModal'); }
+
+  function toggleForm() { (formClass === 'formModal') ? setFormClass('formModalHidden') : setFormClass('formModal'); }
 
   return (
     <div>
       <LoginHeader userName={userName} userAvatar={userAvatar} />
       <div className="mainContainer">
-        <LoginModal loginClass={loginClass} handleClick={handleClick} />
+        <LoginModal loginClass={loginClass} handleClick={toggleLogin} />
+        <FormModal formClass={formClass} handleHide={toggleForm} userId={userId} algo={props.algoList[0]}/>
         <DailyAlgo data={props.algoList} />
         <NewTable data={props.algoList} />
-        {/* <FormModal userId={userId} algo={props.algoList[0]} /> */}
       </div>
     </div>
   );

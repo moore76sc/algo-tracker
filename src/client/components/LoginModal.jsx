@@ -19,7 +19,7 @@ function handleGithub() {
   location.href = 'http://localhost:8080/auth/github';
 }
 
-function LoginModal({ loginClass, handleClick }) {
+function LoginModal({ loginClass, handleHide }) {
   return (
     <div className={loginClass}>
       <div className="innerModal">
@@ -35,10 +35,7 @@ function LoginModal({ loginClass, handleClick }) {
             Login with Github
           </Button>
         </ThemeProvider>
-        <button className="hideButton" type="button" onClick={handleClick}>
-          {' '}
-          Hide{' '}
-        </button>
+        <button className="hideButton" type="button" onClick={handleHide}> Hide </button>
       </div>
     </div>
   );
