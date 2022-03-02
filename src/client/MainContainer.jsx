@@ -64,7 +64,7 @@ const MainContainer = props => {
       <LoginHeader userName={userName} />
       <DailyAlgo />
       <NewTable data={props.algoList} />
-      <FormModal userId={userId} algo={props.algoList[0]} />
+      {/* <FormModal userId={userId} algo={props.algoList[0]} /> */}
     </div>
   );
 };
