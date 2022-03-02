@@ -4,6 +4,10 @@ const router = express.Router();
 const authController = require('../controllers/auth_controller.js');
 
 router.get('/', (req, res) => {
+  return res.status(201);
+});
+
+router.get('/github', (req, res) => {
   res.redirect(
     `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}`,
   );
@@ -14,8 +18,10 @@ router.get('/getAll', authController.getAllUsers, (req, res) => {
 });
 
 
-router.get('/callback', authController.cb, (req, res) => {
+router.get('/callback', authController.cb, authController.addUser, authController.addCookie, (req, res) => {
   res.redirect('http://localhost:8080/');
 });
+
+
 
 module.exports = router;
