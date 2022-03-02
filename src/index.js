@@ -1,8 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App.jsx";
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import App from './App.jsx';
+import store from './client/store';
 import "./styles.css";
 
-
-var mountNode = document.getElementById("app");
-ReactDOM.render(<App name="Jane" />, mountNode);
+render(
+  <Provider store ={store}>
+    <App />
+  </Provider>,
+  document.getElementById('app')
+);
