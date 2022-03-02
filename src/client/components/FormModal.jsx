@@ -1,22 +1,24 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 
-const FormModal = (props) => {
-  // const { closeButton } = props;
-  
-  /**
+const FormModal = props =>
+// const { closeButton } = props;
+
+/**
    * 'completed' var DROPDOWN
    * 'timeComplexity' var DROPDOWN
    * 'difficulty' var DROPDOWN
    * 'repeat' var DROPDOWN
    * 'notes' var TEXT
-   * 
+   *
    * auto-generated data of algo from database
    * 'title' var
    * 'category' var
    * 'date' var
    */
 
-  return (
+  (
     <form className="form">
       {/* mx: left/right margins; mb: bottom margin */}
       <div className="flex flex-wrap -mx-3 mb-6">
@@ -35,13 +37,21 @@ const FormModal = (props) => {
               <select className="select" id="timeComplexity">
                 <option>constant: O(1)</option>
                 <option>linear: O(n)</option>
-                <option>quadratic: O(n<sup>2</sup>)</option>
+                <option>
+                  quadratic: O(n
+                  <sup>2</sup>
+                  )
+                </option>
                 <option>logarithmic: O(log n)</option>
-                <option>linearithmic: O(n<sup>*</sup>log n)</option>
+                <option>
+                  linearithmic: O(n
+                  <sup>*</sup>
+                  log n)
+                </option>
               </select>
             </div>
           </div>
-          
+
           <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
             <label className="label">difficulty</label>
             <div className="relative">
@@ -59,37 +69,43 @@ const FormModal = (props) => {
 
       <div className="flex flex-wrap -mx-3 mb-2">
         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label className="label" for="repeat">
+          <label className="label" htmlFor="repeat">
             would you like this to repeat again?
           </label>
           <div className="relative">
-              <select className="select" id="repeat">
-                <option>yes</option>
-                <option>no</option>
-              </select>
-            </div>
+            <select className="select" id="repeat">
+              <option>yes</option>
+              <option>no</option>
+            </select>
+          </div>
 
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">    
+          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <div className="w-full px-3">
-              <label className="label" for="notes">
+              <label className="label" htmlFor="notes">
                 notes
               </label>
-              <textarea className="textarea" id="notes" rows="3" placeholder="Notes..."></textarea>
+              <textarea
+                className="textarea"
+                id="notes"
+                rows="3"
+                placeholder="Notes..."
+              />
             </div>
           </div>
         </div>
       </div>
 
-      <div class="md:flex md:items-center">
-        <div class="md:w-1/3"></div>
-        <div class="md:w-2/3">
-          <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+      <div className="md:flex md:items-center">
+        <div className="md:w-1/3" />
+        <div className="md:w-2/3">
+          <button
+            className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+            type="submit"
+          >
             submit
           </button>
         </div>
       </div>
     </form>
-  )
-}
-
+  );
 export default FormModal;

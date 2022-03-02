@@ -1,7 +1,7 @@
-import React from 'react';
-import './DailyAlgo.css';
-import PromptChanger from './PromptChanger.jsx';
-import FormModal from './FormModal.jsx';
+import React from "react";
+import "./DailyAlgo.css";
+import PromptChanger from "./PromptChanger.jsx";
+import FormModal from "./FormModal.jsx";
 
 /**
  *
@@ -10,7 +10,6 @@ import FormModal from './FormModal.jsx';
  */
 
 const DailyAlgo = () => {
-
   return (
     <div className="outerBox">
       <h1>Algo of the Day</h1>
@@ -26,9 +25,9 @@ const DailyAlgo = () => {
       </button>
 
       {/* Button for Form Modal */}
-
+      
     </div>
-  )
-}
+  );
+};
 
 export default DailyAlgo;

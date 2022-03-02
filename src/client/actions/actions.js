@@ -12,15 +12,15 @@ import * as types from '../constants/action_types';
 
 export const retrieveAllAlgosActionCreator = dispatch => {
   fetch('http://localhost:3000/algo/all')
-  .then(res => res.json())
-  .then(res => {
-    dispatch({
-      type:types.GET_ALL_ALGOS,
-      payload: res.entries
+    .then(res => res.json())
+    .then(res => {
+      dispatch({
+        type: types.GET_ALL_ALGOS,
+        payload: res.entries
+      })
+      return;
     })
-    return;
-  })
-  .catch(error => {
-    console.log(error);
-  })
+    .catch(error => {
+      console.log(error);
+    })
 };

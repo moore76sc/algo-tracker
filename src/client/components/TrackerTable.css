@@ -1,6 +1,7 @@
-.tableContainer{
+.tableContainer {
   padding: 0.5rem;
   width: 60%;
+  position: center;
 }
 
 table {
