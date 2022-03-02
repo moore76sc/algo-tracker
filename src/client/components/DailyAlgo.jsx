@@ -20,7 +20,7 @@ const DailyAlgo = () => {
       <PromptChanger />
 
       {/* Button for letcode link to daily algo */}
-      <button type="button" class="btn">
+      <button type="button" className="btn">
         {/* write logic for finding associated link with redux and fetching from database */}
         <link rel="stylesheet" href="" />
         link

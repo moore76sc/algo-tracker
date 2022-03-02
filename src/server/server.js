@@ -20,7 +20,10 @@ app.use('/auth', authRouter);
 
 app.use('/algo', algoRouter);
 
-app.get('/', authController.verify, (req, res) => {
+app.get('/', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, '../../dist/index.html'));
+  });
+/* app.get('/', authController.verify, (req, res) => {
   if (res.locals.verifyed) {
     res.status(200).sendFile(path.join(__dirname, '../../dist/index.html'));
   } else {
@@ -29,7 +32,7 @@ app.get('/', authController.verify, (req, res) => {
       `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}`,
     );
   }
-});
+}); */
 
 app.use((req, res) => {
   console.log('404', req.url);

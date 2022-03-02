@@ -6,8 +6,9 @@ import './TrackerTable.css';
 
 
 function Table ({ data }) {
-
-  const columns = React.useMemo( () => //creates our column headers...but what is an accessor?
+console.log('data', data)
+  if(!data){ data = ['YOU BROKE IT']}
+  const columns = React.useMemo( () => 
     [
       {
         Header: 'Algo Tracker',
@@ -15,7 +16,7 @@ function Table ({ data }) {
           [
             {
               Header: 'Name',
-              accessor: 'name', //what is this?
+              accessor: 'name',
             },
             {
               Header: 'Category',
