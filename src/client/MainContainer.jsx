@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { StyledEngineProvider } from '@mui/material/styles';
 import { connect } from 'react-redux';
 import * as actions from './actions/actions.js';
 import DailyAlgo from './components/DailyAlgo.jsx';
@@ -7,7 +6,6 @@ import LoginHeader from './components/LoginHeader.jsx';
 import LoginModal from './components/LoginModal.jsx';
 import FormModal from './components/FormModal.jsx';
 import NewTable from './components/table.jsx';
-
 
 const axios = require('axios');
 
@@ -52,12 +50,14 @@ const MainContainer = props => {
   function toggleForm() { (formClass === 'formModal') ? setFormClass('formModalHidden') : setFormClass('formModal'); }
 
   return (
-    <div className="mainContainer">
-      <LoginModal loginClass={loginClass} handleHide={toggleLogin}/>
-      <FormModal formClass={formClass} handleHide={toggleForm} userId={userId} algo={props.algoList[0]}/>
-      <LoginHeader userName={userName} userAvatar={userAvatar}/>
-      <DailyAlgo toggleForm={toggleForm}/>
-      <NewTable data={props.algoList} />
+    <div>
+      <LoginHeader userName={userName} userAvatar={userAvatar} />
+      <div className="mainContainer">
+        <LoginModal loginClass={loginClass} handleClick={toggleLogin} />
+        <FormModal formClass={formClass} handleHide={toggleForm} userId={userId} algo={props.algoList[0]}/>
+        <DailyAlgo data={props.algoList} />
+        <NewTable data={props.algoList} />
+      </div>
     </div>
   );
 };

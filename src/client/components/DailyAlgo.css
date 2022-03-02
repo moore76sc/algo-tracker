@@ -1,7 +1,32 @@
 .outerBox {
+  display: flex;
+  flex-direction: column;
   border: 1px solid black;
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 100%;
+  min-width: 600px;
+  box-shadow: 5px 10px;
+}
+
+span > h1 {
+  font-size: 3rem;
+  font-weight: bolder;
+}
+
+.algoName {
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+.element {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem 0 0.5rem 0;
+}
+.placeHolder{
+  width: 400px;
+  height: 370px;
 }

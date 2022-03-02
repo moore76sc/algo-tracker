@@ -13,27 +13,27 @@ function NewTable({ data }) {
   const rows = data; 
   console.log(rows.id)  
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 500, maxWidth: 800 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Name of Problem</TableCell>
-            <TableCell align="right">Category</TableCell>
-            <TableCell align="right">LeetCode Link</TableCell>
-            <TableCell align="right">Notes</TableCell>
-            <TableCell align="right">Video Solution</TableCell>
+    <TableContainer className="tableContainer"component={Paper}>
+      <Table className="table"sx={{ minWidth: 500, maxWidth: 800 }} aria-label="simple table">
+        <TableHead className="tableHead">
+          <TableRow className="tableRow">
+            <TableCell className="tableCell">Name of Problem</TableCell>
+            <TableCell className="tableCell"align="right">Category</TableCell>
+            <TableCell className="tableCell"align="right">LeetCode Link</TableCell>
+            <TableCell className="tableCell"align="right">Notes</TableCell>
+            <TableCell className="tableCell"align="right">Video Solution</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody className="tableBody">
           {rows.map(row => (
             <TableRow key={row.id}>
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="right">{row.category}</TableCell>
-              <TableCell align="right"><a href="link">{row.link}</a></TableCell>
-              <TableCell align="right">{row.notes}</TableCell>
-              <TableCell align="right">{row.solution}</TableCell>
+              <TableCell className="tableCell"align="right">{row.category}</TableCell>
+              <TableCell className="tableCell"align="right"><a href="link">{row.link}</a></TableCell>
+              <TableCell className="tableCell"align="right">{row.notes}</TableCell>
+              <TableCell className="tableCell"align="right">{row.solution}</TableCell>
             </TableRow>
           ))}
         </TableBody>

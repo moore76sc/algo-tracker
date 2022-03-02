@@ -1,19 +1,31 @@
-TableContainer {
+.MuiTableContainer-root {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   padding: 0.5rem;
-  width: 100%;
+  width: 80%;
   position: center;
   background-color: pink;
+  
 }
 
-table {
+.MuiTable-root {
   border: 1px solid black;
-}
-tr {
-  border-bottom: 1px;
-}
-th,
-td {
   padding: 0.2rem;
   border-bottom: 1px solid black;
   border-right: 1px solid black;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.MuiTableCell-root{
+  width: 25%;
+  max-width: 15%;
+  border: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.MuiTableHead-root {
+  width: 25%;
+  max-width: 15%;
 }
