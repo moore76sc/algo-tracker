@@ -11,8 +11,7 @@ import FormModal from './FormModal.jsx';
  *
  */
 
-const DailyAlgo = () => {
-
+const DailyAlgo = ({toggleForm}) => {
 
   return (
     <div className="outerBox">
@@ -22,7 +21,7 @@ const DailyAlgo = () => {
       <PromptChanger />
 
       {/* Button for letcode link to daily algo */}
-      <button type="button" className="btn">
+      <button type="button" className="btn" onClick={toggleForm}>
         {/* write logic for finding associated link with redux and fetching from database */}
         <link rel="stylesheet" href="" />
         link

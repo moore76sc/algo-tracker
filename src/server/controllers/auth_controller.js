@@ -120,7 +120,6 @@ authController.addAlgoData = async (req, res, next) => {
 authController.getUserAlgos = async (req, res, next) => {
   try {
     const { id } = req.query;
-    console.log(' ', id);
     const query = `SELECT * FROM algos WHERE userid = ${id};`;
     const { rows } = await db.query(query);
     res.locals.algos = rows;
