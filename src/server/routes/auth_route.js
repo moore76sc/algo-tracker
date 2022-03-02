@@ -8,9 +8,8 @@ router.get('/', (req, res) => {
 });
 
 router.get('/verify', authController.verify, (req, res) => {
-  if (res.locals.name) {
-    console.log(res.locals.name);
-    res.status(200).json({ name: res.locals.name });
+  if (res.locals.userData) {
+    res.status(200).json({ userData: res.locals.userData });
   } else {
     res.status(200).json(null);
   }

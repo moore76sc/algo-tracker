@@ -18,36 +18,37 @@ const mapDispatchToProps = dispatch => ({
 const MainContainer = (props) => {
   const [loginClass, setLoginClass] = useState('loginModalHidden');
   const [userName, setUserName] = useState(null);
-  const [ranOnce, setRanOnce] = useState(null);
+  const [userAvatar, setUserAvatar] = useState(null);
 
   useEffect(() => {
-    props.retrieveAllAlgos()
-  }, [])
+    props.retrieveAllAlgos();
+  }, []);
 
   useEffect(() => {
-    if (ranOnce) return;
     const foo = async () => {
-      const res = await axios.get(`/auth/verify`);
+      const res = await ( await axios.get(`/auth/verify`));
       // if the verify fails, show modal else setUsername
-      res.data === null ? setLoginClass('loginModal') : setUserName(res.data.name);
+      if (res.data === null) {
+        setLoginClass('loginModal');
+      } else {
+        // console.log("data", res.data.userData);
+        setUserName(res.data.userData.name);
+        setUserAvatar(res.data.userData.avatar_url);
+      }
     }
     foo().catch(console.error);
-    setRanOnce(true);
-  });
+  }, []);
 
   function handleClick() { (loginClass === 'loginModal') ? setLoginClass('loginModalHidden') : setLoginClass('loginModal'); }
 
   return (
     <div className="mainContainer">
       <LoginModal loginClass={loginClass} handleClick={handleClick}/>
-      <LoginHeader userName={userName}/>
-
+      <LoginHeader userName={userName} userAvatar={userAvatar}/>
       <DailyAlgo />
       <Table data={props.algoList} />
-
     </div>
   );
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);

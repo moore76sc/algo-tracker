@@ -2,14 +2,14 @@ import React from 'react';
 
 const FormModal = (props) => {
   // const { closeButton } = props;
-  
+
   /**
    * 'completed' var DROPDOWN
    * 'timeComplexity' var DROPDOWN
    * 'difficulty' var DROPDOWN
    * 'repeat' var DROPDOWN
    * 'notes' var TEXT
-   * 
+   *
    * auto-generated data of algo from database
    * 'title' var
    * 'category' var
@@ -41,7 +41,7 @@ const FormModal = (props) => {
               </select>
             </div>
           </div>
-          
+
           <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
             <label className="label">difficulty</label>
             <div className="relative">
@@ -69,7 +69,7 @@ const FormModal = (props) => {
               </select>
             </div>
 
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">    
+          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <div className="w-full px-3">
               <label className="label" for="notes">
                 notes
