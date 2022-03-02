@@ -1,26 +1,38 @@
 /**
- * 
+ *
  * @module actions.js
  * @description Action creators
- * 
+ *
  * Actions are plain JavaScript objects that have a type field. As mentioned earlier, you can think of an action as an event that describes something that happened in the application.
- * 
- * 
+ *
+ *
  */
 
 import * as types from '../constants/action_types';
 
-export const retrieveAllAlgosActionCreator = dispatch => {
+export const retrieveAllAlgosActionCreator = async dispatch => {
   fetch('http://localhost:3000/algo/all')
-  .then(res => res.json())
-  .then(res => {
-    dispatch({
-      type:types.GET_ALL_ALGOS,
-      payload: res.entries
+    .then(res => res.json())
+    .then(res => {
+      dispatch({
+        type: types.GET_ALL_ALGOS,
+        payload: res.entries
+      });
+      return;
     })
-    return;
-  })
-  .catch(error => {
-    console.log(error);
-  })
+    .catch(error => {
+      console.log(error);
+    });
 };
+
+// export const retrieveAllAlgosActionCreator = async dispatch => {
+//   try {
+//     let res = await (await fetch('http://localhost:3000/algo/all')).json();
+//     dispatch({
+//       type: types.GET_ALL_ALGOS,
+//       payload: res.entries
+//     });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };

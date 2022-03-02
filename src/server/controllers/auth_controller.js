@@ -78,7 +78,7 @@ authController.verify = async (req, res, next) => {
       if (!payload.aud) return next();
       const octokit = new Octokit({ auth: payload.aud });
       const result = await octokit.request('GET /user');
-      res.locals.name = result.data.name;
+      res.locals.userData = result.data;
     }
     return next();
   } catch (error) {
