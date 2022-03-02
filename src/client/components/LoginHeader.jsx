@@ -10,8 +10,8 @@ import './LoginHeader.css';
 const theme = createTheme({
   palette: {
     neutral: {
-      main: '#64748B',
-      contrastText: '#fff',
+      main: "#64748B",
+      contrastText: "#fff",
     },
   },
 });
@@ -72,7 +72,7 @@ const Login = ({isLoggedIn, handleLoginState, userName, userAvatar}) => {//creat
           </ThemeProvider>
       }
     </div>
-  )
-}
+  );
+};
 
 export default Login;

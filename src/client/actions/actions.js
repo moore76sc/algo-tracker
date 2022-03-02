@@ -17,22 +17,10 @@ export const retrieveAllAlgosActionCreator = async dispatch => {
       dispatch({
         type: types.GET_ALL_ALGOS,
         payload: res.entries
-      });
+      })
       return;
     })
     .catch(error => {
       console.log(error);
-    });
+    })
 };
-
-// export const retrieveAllAlgosActionCreator = async dispatch => {
-//   try {
-//     let res = await (await fetch('http://localhost:3000/algo/all')).json();
-//     dispatch({
-//       type: types.GET_ALL_ALGOS,
-//       payload: res.entries
-//     });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };

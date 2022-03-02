@@ -21,6 +21,17 @@ const FormModal = (props) => {
    * 'category' var
    * 'date' var
    */
+  <form className="form">
+    {/* mx: left/right margins; mb: bottom margin */}
+    <div className="flex flex-wrap -mx-3 mb-6">
+      <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <label className="label">completed</label>
+        <div className="relative">
+          <select className="select" id="completed">
+            <option>yes</option>
+            <option>in progress</option>
+          </select>
+        </div>
 
   const handleSubmit = () => {
     // needs to get the algo of the day Id or name
@@ -42,7 +53,7 @@ const FormModal = (props) => {
       {/* mx: left/right margins; mb: bottom margin */}
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-          <label className="label">completed</label>
+          <label className="label">time complexity</label>
           <div className="relative">
             <select className="select" id="completed" onChange={(e) => { setCompleted(e.target.value) }}>
               <option>yes</option>
@@ -76,13 +87,9 @@ const FormModal = (props) => {
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="flex flex-wrap -mx-3 mb-2">
-        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label className="label" for="repeat">
-            would you like this to repeat again?
-          </label>
+        <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+          <label className="label">difficulty</label>
           <div className="relative">
               <select className="select" id="repeat" onChange={(e) => { setCompleted(e.target.value) }}>
                 <option>yes</option>
@@ -100,6 +107,7 @@ const FormModal = (props) => {
           </div>
         </div>
       </div>
+    </div>
 
       <div class="md:flex md:items-center">
         <div class="md:w-1/3"></div>
@@ -110,8 +118,6 @@ const FormModal = (props) => {
           </button>
         </div>
       </div>
-    </form>
-  )
-}
+    </div>
 
 export default FormModal;
