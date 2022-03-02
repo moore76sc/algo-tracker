@@ -10,10 +10,14 @@ const trackerTableReducer = (state = initialState, action) => {
   switch(action.type) {
     case types.GET_ALL_ALGOS: {
       newState.algoList.push(...action.payload);
-      console.log(newState.algoList)
+      console.log('newState',newState.algoList)
       return {
         ...newState,
       };
+    }
+      default: {
+        return state;
+    
     }
   }
 }
