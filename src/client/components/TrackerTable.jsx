@@ -2,12 +2,7 @@ import React from 'react';
 import { useTable } from 'react-table';
 import './TrackerTable.css';
 
-
-
-
 function Table ({ data }) {
-console.log('data', data)
-  if(!data){ data = ['YOU BROKE IT']}
   const columns = React.useMemo( () => 
     [
       {
@@ -59,10 +54,10 @@ console.log('data', data)
   } = useTable({
     columns,
     data
-    })
+  })
 
   return (
-  <div className='tableContainer'>
+  <div className="tableContainer">
       <table {...getTableProps()}>
       <thead>
         {headerGroups.map(headerGroup => (
