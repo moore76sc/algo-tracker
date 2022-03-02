@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import GithubLogo from '../imgs/githubLogoSmall.svg'
-import './Login.css';
+import './LoginHeader.css';
 
 const theme = createTheme({
   palette: {

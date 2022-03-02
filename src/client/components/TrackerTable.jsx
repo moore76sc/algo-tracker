@@ -2,12 +2,8 @@ import React from 'react';
 import { useTable } from 'react-table';
 import './TrackerTable.css';
 
-
-
-
 function Table ({ data }) {
-
-  const columns = React.useMemo( () => //creates our column headers...but what is an accessor?
+  const columns = React.useMemo( () => 
     [
       {
         Header: 'Algo Tracker',
@@ -15,7 +11,7 @@ function Table ({ data }) {
           [
             {
               Header: 'Name',
-              accessor: 'name', //what is this?
+              accessor: 'name',
             },
             {
               Header: 'Category',
@@ -58,10 +54,10 @@ function Table ({ data }) {
   } = useTable({
     columns,
     data
-    })
+  })
 
   return (
-  <div className='tableContainer'>
+  <div className="tableContainer">
       <table {...getTableProps()}>
       <thead>
         {headerGroups.map(headerGroup => (

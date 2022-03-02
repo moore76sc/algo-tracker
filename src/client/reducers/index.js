@@ -6,9 +6,10 @@
  */
 
 import { combineReducers } from 'redux';
+import trackerTableReducer from './trackerTableReducer';
 
 const reducers = combineReducers({
-  // include other reducers
+  algos: trackerTableReducer
 });
 
 export default reducers;

@@ -20,17 +20,8 @@ app.use('/auth', authRouter);
 
 app.use('/algo', algoRouter);
 
-// authController.verify
 app.get('/', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../../dist/index.html'));
-  // if (res.locals.name) {
-  //   res.status(200).sendFile(path.join(__dirname, '../../dist/index.html'));
-  // } else {
-  //   console.log('hey stranger, youre not authorized: please sign up on github');
-  //   res.redirect(
-  //     `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}`,
-  //   );
-  // }
 });
 
 app.use((req, res) => {
@@ -46,7 +37,7 @@ app.use((err, req, res, next) => {
     message: { err: 'An error occurred' },
   };
   const errorObj = Object.assign({}, defaultErr, err);
-  console.log(errorObj.log);
+  //console.log(errorObj.log);
   return res.status(errorObj.status).json(errorObj.message);
 });
 
