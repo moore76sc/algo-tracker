@@ -10,7 +10,17 @@
 
 import * as types from '../constants/action_types';
 
-export const someAction = () => ({
-  //type: ,
-  //payload: ,
-});
+export const retrieveAllAlgosActionCreator = dispatch => {
+  fetch('http://localhost:3000/algo/all')
+  .then(res => res.json())
+  .then(res => {
+    dispatch({
+      type:types.GET_ALL_ALGOS,
+      payload: res.entries
+    })
+    return;
+  })
+  .catch(error => {
+    console.log(error);
+  })
+};

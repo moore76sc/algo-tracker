@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from './actions/actions.js';
+import DailyAlgo from './components/DailyAlgo.jsx'
 import Login from './components/Login.jsx';
 import Table from './components/TrackerTable.jsx';
 
@@ -12,6 +13,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   //create functions that will dispatch action creators
 });
+
 const data = [{
    name: 'Best Time to Buy and Sell Stock',
    category: 'Easy',
@@ -30,6 +32,7 @@ const MainContainer = () => {
       <a class="btn btn-blue" type='button' href="/auth" >
         Login with Github
       </a>
+      <DailyAlgo />
       <Table data={data}/>
     </div>
   );

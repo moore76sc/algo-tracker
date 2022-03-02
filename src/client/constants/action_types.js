@@ -1,0 +1,1 @@
+export const GET_ALL_ALGOS = 'Retrieve algos from database'
