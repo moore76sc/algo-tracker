@@ -11,7 +11,6 @@ import FormModal from './FormModal.jsx';
 
 const DailyAlgo = () => {
   
-  
   return (
     <div className="outerBox">
       <h1>Algo of the Day</h1>

@@ -15,7 +15,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const MainContainer = (props) => {
-  console.log('props', props)
   useEffect(() => {
     props.retrieveAllAlgos()
   }, [])

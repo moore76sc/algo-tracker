@@ -1,25 +1,26 @@
 import * as types from '../constants/action_types.js';
 
 const initialState = {
-algoList: [],
-
+  algoList: [],
 }
 
 const trackerTableReducer = (state = initialState, action) => {
-  const newState = {...state}
-  switch(action.type) {
-    case types.GET_ALL_ALGOS: {
-      newState.algoList.push(...action.payload);
-      console.log('newState',newState.algoList)
+  let algoList;
+
+  switch (action.type) {
+    case types.GET_ALL_ALGOS: 
+      algoList = state.algoList.slice();
+      algoList.push(...action.payload);
       return {
-        ...newState,
+        ...state,
+        algoList
       };
-    }
-      default: {
-        return state;
     
-    }
+    default: 
+      return state;
   }
 }
 
 export default trackerTableReducer;
+
+//BIG BODY MILL WAS HERE BOYYYYYYYYYYYY
