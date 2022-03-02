@@ -7,10 +7,15 @@ router.get('/', (req, res) => {
   return res.status(201);
 });
 
+
+
+router.post('/addAlgoData', authController.addAlgoData, (req, res) => {
+  return res.status(201).redirect('http://localhost:8080/');
+});
+
 router.get('/verify', authController.verify, (req, res) => {
-  if (res.locals.name) {
-    console.log(res.locals.name);
-    res.status(200).json({ name: res.locals.name });
+  if (res.locals.userData) {
+    res.status(200).json({ userData: res.locals.userData });
   } else {
     res.status(200).json(null);
   }
@@ -26,6 +31,13 @@ router.get('/getAll', authController.getAllUsers, (req, res) => {
   return res.status(201).json({ entries: res.locals.users });
 });
 
+router.get('/getAllAlgos', authController.getAllAlgos, (req, res) => {
+  return res.status(201).json({ entries: res.locals.algos });
+});
+
+router.get('/getUserAlgos', authController.getUserAlgos, (req, res) => {
+  return res.status(201).json({ entries: res.locals.algos });
+});
 
 router.get('/callback', authController.cb, authController.addUser, authController.addCookie, (req, res) => {
   res.redirect('http://localhost:8080/');

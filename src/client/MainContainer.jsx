@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default-member */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-console */
@@ -28,24 +29,28 @@ const mapDispatchToProps = dispatch => ({
 const MainContainer = props => {
   const [loginClass, setLoginClass] = useState('loginModalHidden');
   const [userName, setUserName] = useState(null);
-  const [ranOnce, setRanOnce] = useState(null);
+  const [userId, setUserId] = useState(null);
+  const [userAvatar, setUserAvatar] = useState(null);
 
   useEffect(() => {
     props.retrieveAllAlgos();
   }, []);
 
   useEffect(() => {
-    if (ranOnce) return;
     const foo = async () => {
       const res = await axios.get('/auth/verify');
       // if the verify fails, show modal else setUsername
-      res.data === null
-        ? setLoginClass('loginModal')
-        : setUserName(res.data.name);
-    };
+      if (res.data === null) {
+        setLoginClass('loginModal');
+      } else {
+        // console.log("data", res.data.userData);
+        setUserName(res.data.userData.name);
+        setUserId(res.data.userData.id);
+        setUserAvatar(res.data.userData.avatar_url);
+      }
+    }
     foo().catch(console.error);
-    setRanOnce(true);
-  }, [ranOnce]);
+  }, []);
 
   function handleClick() {
     loginClass === 'loginModal'
@@ -59,6 +64,7 @@ const MainContainer = props => {
       <LoginHeader userName={userName} />
       <DailyAlgo />
       <NewTable data={props.algoList} />
+      <FormModal userId={userId} algo={props.algoList[0]} />
     </div>
   );
 };
