@@ -1,22 +1,32 @@
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-console */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-expressions */
 import React, { useState, useEffect } from 'react';
+import { StyledEngineProvider } from '@mui/material/styles';
 import { connect } from 'react-redux';
 import * as actions from './actions/actions.js';
-import DailyAlgo from './components/DailyAlgo.jsx'
+import DailyAlgo from './components/DailyAlgo.jsx';
 import LoginHeader from './components/LoginHeader.jsx';
 import LoginModal from './components/LoginModal.jsx';
-import FormModal from './components/FormModal.jsx';
-import Table from './components/TrackerTable.jsx';
+import NewTable from './components/table.jsx';
+
+
 const axios = require('axios');
 
 const mapStateToProps = state => ({
-  algoList: state.algos.algoList
+  algoList: state.algos.algoList,
 });
 
 const mapDispatchToProps = dispatch => ({
-  retrieveAllAlgos: () => actions.retrieveAllAlgosActionCreator(dispatch)
+  retrieveAllAlgos: () => actions.retrieveAllAlgosActionCreator(dispatch),
 });
 
-const MainContainer = (props) => {
+const MainContainer = props => {
   const [loginClass, setLoginClass] = useState('loginModalHidden');
   const [formClass, setFormClass] = useState('formModal');
 
@@ -30,7 +40,7 @@ const MainContainer = (props) => {
 
   useEffect(() => {
     const foo = async () => {
-      const res = await axios.get(`/auth/verify`);
+      const res = await axios.get('/auth/verify');
       // if the verify fails, show modal else setUsername
       if (res.data === null) {
         setLoginClass('loginModal');
@@ -54,9 +64,9 @@ const MainContainer = (props) => {
       <FormModal formClass={formClass} handleHide={hideForm} userId={userId} algo={props.algoList[0]}/>
       <LoginHeader userName={userName} userAvatar={userAvatar}/>
       <DailyAlgo />
-      <Table data={props.algoList} />
+      <NewTable data={props.algoList} />
     </div>
   );
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);

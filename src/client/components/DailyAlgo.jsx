@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable arrow-body-style */
 import React from 'react';
 import './DailyAlgo.css';
 import PromptChanger from './PromptChanger.jsx';
@@ -10,6 +12,7 @@ import FormModal from './FormModal.jsx';
  */
 
 const DailyAlgo = () => {
+
 
   return (
     <div className="outerBox">
@@ -26,9 +29,9 @@ const DailyAlgo = () => {
       </button>
 
       {/* Button for Form Modal */}
-
+      {/* <FormModal /> */}
     </div>
-  )
-}
+  );
+};
 
 export default DailyAlgo;

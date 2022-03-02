@@ -6,21 +6,20 @@ const initialState = {
 
 const trackerTableReducer = (state = initialState, action) => {
   let algoList;
+  console.log('table reducer fire')
 
   switch (action.type) {
-    case types.GET_ALL_ALGOS: 
+    case types.GET_ALL_ALGOS:
       algoList = state.algoList.slice();
       algoList.push(...action.payload);
       return {
         ...state,
         algoList
       };
-    
-    default: 
+
+    default:
       return state;
   }
 }
 
 export default trackerTableReducer;
-
-//BIG BODY MILL WAS HERE BOYYYYYYYYYYYY

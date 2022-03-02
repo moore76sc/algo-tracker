@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const webpack = require('webpack');
 const path = require('path');
 
@@ -5,18 +6,18 @@ const config = {
   entry: [
     'babel-polyfill',
     'react-hot-loader/patch',
-    './src/index.js'
+    './src/index.js',
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         use: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.css$/,
@@ -25,24 +26,24 @@ const config = {
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 1
-            }
+              importLoaders: 1,
+            },
           },
-          'postcss-loader'
-        ]
+          'postcss-loader',
+        ],
       },
       {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
-      }
-    ]
+      },
+    ],
   },
   devServer: {
     host: 'localhost',
     port: 8080,
     static: {
       directory: path.resolve(__dirname, 'dist'),
-      publicPath: '/'
+      publicPath: '/',
     },
     hot: true,
     historyApiFallback: true,
@@ -57,8 +58,8 @@ const config = {
   performance: {
     hints: false,
     maxEntrypointSize: 512000,
-    maxAssetSize: 512000
-  }
+    maxAssetSize: 512000,
+  },
 };
 
 module.exports = config;

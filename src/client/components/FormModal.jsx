@@ -3,7 +3,6 @@ import './FormModal.css';
 const axios = require('axios');
 
 const FormModal = ({ formClass, handleHide }) => {
-  // const { closeButton } = props;
   const [completed, setCompleted] = useState('yes');
   const [timeComp, setTimeComp] = useState('constant: O(1)');
   const [difficulty, setDifficulty] = useState('easy');
@@ -109,19 +108,4 @@ const FormModal = ({ formClass, handleHide }) => {
     </div>
   )
 }
-
 export default FormModal;
-
-
-/**
- * 'completed' var DROPDOWN
- * 'timeComplexity' var DROPDOWN
- * 'difficulty' var DROPDOWN
- * 'repeat' var DROPDOWN
- * 'notes' var TEXT
- *
- * auto-generated data of algo from database
- * 'title' var
- * 'category' var
- * 'date' var
- */

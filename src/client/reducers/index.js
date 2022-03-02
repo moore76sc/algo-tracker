@@ -1,8 +1,6 @@
 /**
- * 
  * @module index.js
  * @description Root reducer
- * 
  */
 
 import { combineReducers } from 'redux';

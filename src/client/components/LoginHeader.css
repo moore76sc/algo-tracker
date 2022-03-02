@@ -1,9 +1,9 @@
-.login{
+.login {
   display: flex;
   justify-content: flex-end;
 }
 
-.helloMsg{
+.helloMsg {
   text-align: right;
   margin-right: 10px;
 }
