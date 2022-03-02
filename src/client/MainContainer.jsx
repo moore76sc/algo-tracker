@@ -16,24 +16,20 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const MainContainer = (props) => {
-  useEffect(() => {
-    props.retrieveAllAlgos()
-  }, [])
-
-const MainContainer = (props) => {
   const [loginClass, setLoginClass] = useState('loginModalHidden');
   const [userName, setUserName] = useState(null);
   const [ranOnce, setRanOnce] = useState(null);
 
   useEffect(() => {
+    props.retrieveAllAlgos()
+  }, [])
+
+  useEffect(() => {
     if (ranOnce) return;
     const foo = async () => {
       const res = await axios.get(`/auth/verify`);
-      if (res.data === null) {
-        setLoginClass('loginModal'); // if the verify fails, show modal
-      } else {
-        setUserName(res.data.name);
-      }
+      // if the verify fails, show modal else setUsername
+      res.data === null ? setLoginClass('loginModal') : setUserName(res.data.name);
     }
     foo().catch(console.error);
     setRanOnce(true);
