@@ -34,10 +34,11 @@ function youtubeLinkParse(str) {
 }
 
 function handleClick(link) {
-  location.href = link;
+  // location.href = link;
+  window.open(link, "_blank");
 }
 
-const DailyAlgo = ({ data }) => {
+const DailyAlgo = ({ data, toggleForm }) => {
   const rows = data; 
   const algo = (rows) ? rows[randomAlgo(rows)] : null;
 
@@ -48,19 +49,18 @@ const DailyAlgo = ({ data }) => {
       </span>
       {algo ? (
         <div className="element">
-          <h2 className="algoName"> {algo.name} </h2>
+          <h2 className="algoName"> <em>{algo.name} </em></h2>
           <YoutubeEmbed
-            className="element"
             embedId={youtubeLinkParse(algo.solution)}
           />
           <ThemeProvider theme={theme}>
             <Button
-              className="element"
               color="neutral"
               variant="contained"
               type="button"
               onClick={() => {
                 handleClick(algo.link);
+                toggleForm();
               }}
             >
               {`Practice ${algo.name} on Leet Code`}

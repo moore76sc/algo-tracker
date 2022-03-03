@@ -1,12 +1,15 @@
 .outerBox {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  border: 1px solid grey;
   justify-content: center;
   align-items: center;
   text-align: center;
   min-width: 600px;
-  box-shadow: 5px 10px;
+  box-shadow: 5px 10px grey;
+  background-color: whitesmoke;
+  margin-top: 4rem;
+  border-radius: 30px;
 }
 
 span > h1 {
@@ -26,7 +29,12 @@ span > h1 {
   align-items: center;
   margin: 0.5rem 0 0.5rem 0;
 }
-.placeHolder{
+
+.element > div {
+  margin: 1rem 0 1rem 0;
+}
+
+.placeHolder {
   width: 400px;
   height: 370px;
 }

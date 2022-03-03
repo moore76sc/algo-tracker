@@ -1,31 +1,40 @@
-.MuiTableContainer-root {
+.MuiTableContainer-root.tableContainer {
   display: block;
   margin-left: auto;
   margin-right: auto;
   padding: 0.5rem;
-  width: 80%;
+  width: 60%;
   position: center;
-  background-color: pink;
-  
+  background-color: whitesmoke;
+  border: 1px lightgray;
+  box-shadow: 5px 10px gray;
 }
 
-.MuiTable-root {
+table.MuiTable-root {
   border: 1px solid black;
-  padding: 0.2rem;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
-  display: block;
   margin-left: auto;
   margin-right: auto;
+  border-style: groove;
+  box-shadow: 5px 10px gray;
 }
 
-.MuiTableCell-root{
-  width: 25%;
-  max-width: 15%;
+td.MuiTableCell-root{
   border: 1px solid black;
-  border-bottom: 1px solid black;
-}
-.MuiTableHead-root {
   width: 25%;
-  max-width: 15%;
+}
+th.MuiTableCell-root{
+  border: 1px solid black;
+  width: 25%;
+}
+
+thead.MuiTableHead-root{
+  border: 1px solid black;
+ 
+}
+tbody.MuiTableBody-root{
+  border: 1px solid black;
+
+}
+tr.MuiTableRow-root{
+  border: 1px solid black;
 }

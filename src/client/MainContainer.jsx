@@ -53,10 +53,14 @@ const MainContainer = props => {
     <div>
       <LoginHeader userName={userName} userAvatar={userAvatar} />
       <div className="mainContainer">
-        <LoginModal loginClass={loginClass} handleClick={toggleLogin} />
+        <LoginModal loginClass={loginClass} handleHide={toggleLogin} />
         <FormModal formClass={formClass} handleHide={toggleForm} userId={userId} algo={props.algoList[0]}/>
-        <DailyAlgo data={props.algoList} />
-        <NewTable data={props.algoList} />
+        <div className="pageComponent">
+          <DailyAlgo data={props.algoList} toggleForm={toggleForm} />
+        </div>
+        {/* <div className="pageComponent"> */}
+          <NewTable data={props.algoList} />
+        {/* </div> */}
       </div>
     </div>
   );
